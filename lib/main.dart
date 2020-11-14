@@ -47,6 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 5), () {
 
+          //checks if user is already signed into the app via Firebase auth (which includes Apple and Google auth)
+          //... sends them to introduction screen if not signed in
           FirebaseAuth.instance.currentUser().then((firebaseUser) {
         if (firebaseUser != null) {
           print('kk');
@@ -59,12 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         firebaseUser.email, firebaseUser.displayName)),
           );
         }
-
-        //check if it was a Apple Auth
-        //else move on to welcome screen then sign in screen
         else {
-          print("Welcome_________________");
-
           //Welcome screen
           Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (BuildContext context) =>
