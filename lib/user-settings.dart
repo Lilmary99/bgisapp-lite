@@ -36,7 +36,7 @@ class UserSettingsState extends State<UserSettings> {
   final FirebaseMessaging _fcm = FirebaseMessaging();
   UserSettingsState(this.email, this.name);
 
-  //TODO: should be pre-loaded from firebase database
+  //Should be pre-loaded from firestore database
   bool requestNotifs = false;
 
   @override
