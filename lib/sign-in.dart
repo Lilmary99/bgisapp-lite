@@ -147,12 +147,6 @@ class RegSignInState extends State<RegularSignIn> {
                         );
                       });
 
-
-                      /**Navigator.of(context).push(
-                          MaterialPageRoute(
-                          builder: (context) =>
-                          CreateAccount()),
-                          );*/
                     },
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
