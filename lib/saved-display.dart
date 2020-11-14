@@ -63,7 +63,7 @@ class DisplayAlertsState extends State<SavedDisplayAlerts> {
                 SizedBox(
                   height: 10,
                 ),
-                //PULL ALERTS FROM DATABASE HERE AND CREATE TEXT OBJECTS?
+                //PULL ALERTS FROM DATABASE HERE AND CREATES LISTVIEWS
                 showAlerts(context),
               ],
             )
