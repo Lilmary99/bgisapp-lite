@@ -2,8 +2,10 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+//begins taking snap shot of the new or updated alert document from the firestore database
 exports.sendNotificationToTopic = functions.firestore.document('/alerts/{id}').onWrite((snap, event) => {
-//const projectId = event.params.projectId;
+
+//saves alert to snapshot and then grabs the alert's topic
 const alert = snap.after.data();
 var categories = alert.ops;
 var s = "";
@@ -17,6 +19,8 @@ console.log(s);
 var d = new Date(alert.created.toDate().toString());
 var result = d.toLocaleString('en-US',{month:'long'})+" "+d.getDate()+", "+d.getFullYear();
 
+//configuration of push notification payload for each topic begins here:
+    
 if(s.includes("Weather")){
      const payload = {notification: {
          title: 'Weather',
@@ -30,6 +34,7 @@ if(s.includes("Weather")){
          }
      };
 
+    //sends alert to users subscribed to Weather topic
      return admin.messaging().sendToTopic('Weather',payload)
        .then((response) => {
          // Response is a message ID string.
