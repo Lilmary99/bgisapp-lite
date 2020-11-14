@@ -20,23 +20,6 @@ import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:bgisapp/createaccount.dart';
 import 'package:provider/provider.dart';
 
-
-//void main() => runApp(MyApp());
-/**
-    class MyApp extends StatelessWidget {
-    // This widget is the root of your application.
-    @override
-    Widget build(BuildContext context) {
-    return MaterialApp(
-    title: 'BGIS Alerts',
-    theme: ThemeData(
-    primaryColor: Colors.white,
-    ),
-    home: MyHomePage(title: 'BGIS Alerts'),
-    );
-    }
-    }*/
-
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
