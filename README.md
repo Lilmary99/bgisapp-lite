@@ -1,4 +1,4 @@
-## BGIS Alerts App
+## BGIS Alerts App (Lite)
 Commissioned by the country of Barbados to develop an iOS and Android app that alerts citizens of Barbados of special warnings during the COVID-19 pandemic. Developed in Dart and Flutter
 
 ## Helpful Notes
