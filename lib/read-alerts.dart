@@ -28,6 +28,7 @@ class ReadAlertsState extends State<ReadAlerts> {
 
   ReadAlertsState(this.topic, this.message, this.date);
 
+  //sets up display for reading an alert
   @override
   Widget build(BuildContext context) {
     return Scaffold(
