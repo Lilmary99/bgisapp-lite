@@ -64,6 +64,7 @@ class ProfileState extends State<Person> {
 
       String url = "";
 
+      //if the user's email account does not have a url for a photo then it will upload an anonymous avi
       if(getGS()){
         url = getImage();
         if (url == "null"){
@@ -256,6 +257,7 @@ class ProfileState extends State<Person> {
       );
   }
 
+  //the following methods are needed for configuring the user's location
 
   _getCurrentLocation() {
     geolocator
