@@ -25,6 +25,8 @@ class CreateAccount extends StatefulWidget {
 class CreateAccountState extends State<CreateAccount> {
   final FirebaseMessaging _fcm = FirebaseMessaging();
   final FirebaseAuth auth = FirebaseAuth.instance;
+  
+  //controllers used for saving user's name, email, and password
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwdController = new TextEditingController();
   TextEditingController nameController = new TextEditingController();
@@ -72,6 +74,7 @@ class CreateAccountState extends State<CreateAccount> {
                 ),),),
             SizedBox(height: 10.0),
 
+            //begins code for entering and saving user email and password
         Flexible(
         child: Container(
           width: 300.0,
@@ -120,14 +123,13 @@ helperText: "Must be at least 6 characters.",
                     borderRadius: BorderRadius.circular(40)),
                 color: Colors.amber[800],
                 onPressed: () {
-                  //push create account() page then pop it when user clicks Done and push SavedDisplay
-                  //Navigator.pop(context);
+                  //after signing the user up for the app, it then signs the user into the app
 
                   setState(() {
                     signUp(emailController.text,passwdController.text, nameController.text).whenComplete(() {
 
                     if(getSuccess()){
-                        //TODO: 1. CREATE DOC IN FIRESTORE 2. OPEN SAVED DISPLAY
+                     
                         print(emailController.text);
 
                     setState(() {
@@ -164,13 +166,6 @@ helperText: "Must be at least 6 characters.",
                     });
                   });
 
-
-
-                  /**Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CreateAccount()),
-                  );*/
                 },
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -197,7 +192,8 @@ helperText: "Must be at least 6 characters.",
     );
   }
 
-
+  
+  //authenticates user by using Firebase auth
   Future <FirebaseUser> signUp(email, password, name) async {
     try {
       UserUpdateInfo updateInfo = UserUpdateInfo();
@@ -222,6 +218,7 @@ helperText: "Must be at least 6 characters.",
     }
   }
 
+  //adds the user to the database
   void createRecord(String email, String name) async {
     await Firestore.instance.collection("auth-users").document(email).setData({
       'Closure': 'true',
@@ -265,6 +262,7 @@ helperText: "Must be at least 6 characters.",
     }
   }//saveDeviceToken
 
+  //authenticates user by using Firebase auth
   Future <FirebaseUser> signIn(String email, String password) async {
     try {
       FirebaseUser user = (await auth.signInWithEmailAndPassword(email: email, password: password)).user;
